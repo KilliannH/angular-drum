@@ -1,0 +1,25 @@
+.jumbo {
+    padding-top : 75px;
+    text-align: center;
+    padding-bottom : 25px;
+}
+
+.drummers_card {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.rounded-circle {
+    width: 200px;
+    height: 200px;
+}
+
+.disabled {
+    text-decoration: none;
+    opacity: 0.65; 
+    cursor: not-allowed;
+  }
+
+  .hideWarn {
+    cursor: pointer;
+  }

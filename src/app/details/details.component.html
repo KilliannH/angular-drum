@@ -1,0 +1,18 @@
+<div class="row">
+   <div class="col-md-3 details_container" *ngIf="drummer | async; let drummer; else loading">
+        <h2 class="details_name">{{drummer.name}}</h2>
+          <img class="details_image img-thumbnail"src="{{drummer.image_url}}" alt="{{drummer.name}}">
+          <small class="small">Brands : {{drummer.brands}}</small><br>
+          <br><small class="small">Bands : {{drummer.bands}}</small>
+    </div>
+
+    <div class="col-md-9 details_description" *ngIf="drummer | async; let drummer; else loading">
+      <p>{{drummer.description}}</p>
+    </div>
+
+    <div class="col-md-12 details_goBack">
+      <a class="btn btn-light float-left" (click)="showThatObservable()">Show</a>
+      <a class="btn btn-primary float-right" routerLink=''>Go Back</a>
+    </div>
+</div>
+      <ng-template #loading></ng-template>

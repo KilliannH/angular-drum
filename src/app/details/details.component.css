@@ -1,0 +1,15 @@
+.details_container {
+    padding-top: 100px;
+}
+
+.details_description {
+    padding-top: 200px;
+}
+
+.details_image {
+    width: 300px;
+}
+
+.details_name {
+    text-align: center;
+}

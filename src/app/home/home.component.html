@@ -1,0 +1,17 @@
+      <div class="jumbo">
+        <h1>Welcome !</h1>
+        <p>Here, you can find most famous drummers of all time :)</p>
+          <a href="#" (click)="warnHim()" class="disabled">Add more . . .</a>
+          <div *ngIf="warnRegister" class="alert alert-danger" role="alert">
+            Hey, you have to be logged in to do that ! <a (click)="hideWarnMessage()"><small class="float-right hideWarn">Hide</small></a>
+          </div>
+      </div>
+
+
+  <div class="row drummers_container">
+      <div class="col-lg-4 drummers_card" *ngFor='let drummer of drummers'>
+        <img class="rounded-circle" src="{{drummer.image_url}}" alt="Generic placeholder image" width="260px" height="260px">
+        <h2 class="variété_title">{{ drummer.name }}</h2>
+          <a  class="btn btn-primary" (click)="clearThem()" routerLink='details/{{drummer._id}}'>View Details</a>
+      </div><!-- /.col-lg-4 -->
+  </div>
