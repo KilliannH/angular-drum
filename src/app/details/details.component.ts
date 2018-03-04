@@ -17,10 +17,26 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class DetailsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private _dataService: DataService) { }
+  constructor(private route: ActivatedRoute, private _sanitizer: DomSanitizer, private _dataService: DataService) { }
 
   drummer: Observable<{}>;
   drummerId: string;
+  drummerShows: string;
+
+  //Here we got an infinite observable
+  //and i'm interesting about fetching shows_url field from it.
+  drummerSubscribed = { 
+    next: function(value) {
+      console.log(value.shows_url);
+      this.drummerShows = value.shows_url;
+    },
+    error: function(value) {
+      console.log(value);
+    },
+    complete: function(value) {
+      console.log(value);
+    }
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -28,6 +44,7 @@ export class DetailsComponent implements OnInit {
     });
     this.drummer = this.getAsyncData().pipe(share());
     this.drummer = this.showDrummerDetails(this.drummerId);
+    this.retrievingShowsUrl();    
   }
   
   getAsyncData() {
@@ -35,6 +52,7 @@ export class DetailsComponent implements OnInit {
     return of({
       name: 'Luke',
       image_url: 'Skywalker',
+      shows_url: 'John Williams',
       description: 'bla',
       brand: 'salut',
       bands: 'ça va'
@@ -47,9 +65,10 @@ export class DetailsComponent implements OnInit {
     return this._dataService.getDrummersById(id);
   }
 
-  showThatObservable(){
-    this.drummer.subscribe(res =>
-       console.log(res));
+  retrievingShowsUrl(){
+    this.drummer.subscribe(this.drummerSubscribed.next);
     }
+
+    //cannot sanitize it the right way
 
 }

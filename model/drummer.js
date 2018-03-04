@@ -21,6 +21,9 @@ var drummersSchema = mongoose.Schema({
     image_url:{
         type: String
     },
+    shows_url:{
+        type: String
+    },
 
     create_date:{
         type: Date,
@@ -54,7 +57,8 @@ module.exports.updateDrummer = function (id, drummer, options, callback) {
         description: drummer.description,
         brands: drummer.brands,
         bands: drummer.bands,
-        image_url: drummer.image_url
+        image_url: drummer.image_url,
+        shows_url: drummer.shows_url
     }
     Drummer.findOneAndUpdate(query, update, options, callback);
 }

@@ -9,10 +9,18 @@
     <div class="col-md-9 details_description" *ngIf="drummer | async; let drummer; else loading">
       <p>{{drummer.description}}</p>
     </div>
+</div>
 
-    <div class="col-md-12 details_goBack">
-      <a class="btn btn-light float-left" (click)="showThatObservable()">Show</a>
+<div class="row">
+  <div class="col-md-12">
       <a class="btn btn-primary float-right" routerLink=''>Go Back</a>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 details_video">
     </div>
 </div>
-      <ng-template #loading></ng-template>
+
+
+<ng-template #loading></ng-template>
